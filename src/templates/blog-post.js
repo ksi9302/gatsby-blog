@@ -1,11 +1,13 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import get from 'lodash/get'
-import { renderRichText } from 'gatsby-source-contentful/rich-text'
+// import { renderRichText } from 'gatsby-source-contentful/rich-text'
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer'
-import { BLOCKS } from '@contentful/rich-text-types'
-import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+// import { BLOCKS } from '@contentful/rich-text-types'
+// import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import readingTime from 'reading-time'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
 import Seo from '../components/seo'
 import Layout from '../components/layout'
@@ -21,22 +23,19 @@ class BlogPostTemplate extends React.Component {
     const plainTextDescription = documentToPlainTextString(
       JSON.parse(post.description.raw)
     )
-    const plainTextBody = documentToPlainTextString(JSON.parse(post.body.raw))
-    const { minutes: timeToRead } = readingTime(plainTextBody)
-    
-    const options = {
-      renderNode: {
-        [BLOCKS.EMBEDDED_ASSET]: (node) => {
-        const { gatsbyImage, description } = node.data.target
-        return (
-           <GatsbyImage
-              image={getImage(gatsbyImage)}
-              alt={description}
-           />
-         )
-        },
-      },
-    };
+    // const plainTextBody = documentToPlainTextString(JSON.parse(post.body.raw))
+    const { minutes: timeToRead } = readingTime(post.body.body)
+
+    // const options = {
+    //   renderNode: {
+    //     [BLOCKS.EMBEDDED_ASSET]: (node) => {
+    //       const { gatsbyImage, description } = node.data.target
+    //       return <GatsbyImage image={getImage(gatsbyImage)} alt={description} />
+    //     },
+    //   },
+    // }
+
+    console.log(post.body)
 
     return (
       <Layout location={this.props.location}>
@@ -58,7 +57,9 @@ class BlogPostTemplate extends React.Component {
           </span>
           <div className={styles.article}>
             <div className={styles.body}>
-              {post.body?.raw && renderRichText(post.body, options)}
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {post.body.body}
+              </ReactMarkdown>
             </div>
             <Tags tags={post.tags} />
             {(previous || next) && (
@@ -111,8 +112,7 @@ export const pageQuery = graphql`
         }
       }
       body {
-        raw
-        
+        body
       }
       tags
       description {
