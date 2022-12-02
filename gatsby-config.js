@@ -3,6 +3,7 @@ require('dotenv').config({
 })
 
 module.exports = {
+  pathPrefix: '/gatsby-blog',
   siteMetadata: {
     title: 'Gatsby Contentful Starter',
     description: 'Official Contentful Gatsby Starter',
