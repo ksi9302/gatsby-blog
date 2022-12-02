@@ -12,8 +12,9 @@ const Progress = (props) => {
       <Seo title="Blog" />
       <div className={styles.container}>
         <div className={styles.body}>
+          {/* prettier-ignore */}
           <ReactMarkdown remarkPlugins={[remarkGfm, emoji]}>
-            :hammer: __Site Under Construction__
+            {content}
           </ReactMarkdown>
         </div>
       </div>
@@ -22,3 +23,17 @@ const Progress = (props) => {
 }
 
 export default Progress
+
+const content = `
+# :hammer: Site Under Construction
+
+
+- [X] Enable GFM
+- [X] Enable GFM - Image
+- [ ] Publish on github pages
+- [ ] Add Dark mode support
+- [ ] Add Comment
+- [ ] Add RSS
+- [ ] Add SNS Share
+
+`
