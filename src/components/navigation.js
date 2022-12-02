@@ -10,7 +10,7 @@ const Navigation = () => (
     <Link to="/" className={styles.logoLink}>
       <img
         className={styles.logoImg}
-        src="/image/profile-trimmed.jpg"
+        src="/images/profile-trimmed.jpg"
         alt="logo"
       />
       <span className={styles.navigationItem}>@ksi9302</span>
