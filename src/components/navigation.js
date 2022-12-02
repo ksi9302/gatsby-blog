@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { Link, withPrefix } from 'gatsby'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import emoji from 'remark-emoji'
@@ -10,7 +10,7 @@ const Navigation = () => (
     <Link to="/" className={styles.logoLink}>
       <img
         className={styles.logoImg}
-        src="/images/profile-trimmed.jpg"
+        src={withPrefix('/images/profile-trimmed.jpg')}
         alt="logo"
       />
       <span className={styles.navigationItem}>@ksi9302</span>
