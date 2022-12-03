@@ -5,8 +5,9 @@ require('dotenv').config({
 module.exports = {
   pathPrefix: `/gatsby-blog`,
   siteMetadata: {
-    title: 'Gatsby Contentful Starter',
-    description: 'Official Contentful Gatsby Starter',
+    title: 'Ksi Devlog',
+    description: 'Devlog of @ksi9302',
+    siteURL: `https://ksi9302.github.io/gatsby-blog/`,
   },
   plugins: [
     'gatsby-transformer-sharp',
