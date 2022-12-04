@@ -8,7 +8,7 @@ import { documentToPlainTextString } from '@contentful/rich-text-plain-text-rend
 import readingTime from 'reading-time'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-
+import Comments from '../components/comment'
 import Seo from '../components/seo'
 import Layout from '../components/layout'
 import Hero from '../components/hero'
@@ -82,6 +82,7 @@ class BlogPostTemplate extends React.Component {
                 </ul>
               </nav>
             )}
+            <Comments />
           </div>
         </div>
       </Layout>

@@ -32,7 +32,7 @@ const content = `
 - [X] Enable GFM - Image
 - [X] Publish on ~~github pages~~ netlify (pathprefix not working)
 - [ ] Add Dark mode support
-- [ ] Add Comment
+- [X] Add Comment - implemented utterances
 - [ ] Add RSS
 - [ ] Add SNS Share
 
